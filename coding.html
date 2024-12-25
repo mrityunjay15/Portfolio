@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding World</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #101010;
+            color: #f4f4f4;
+            scroll-behavior: smooth;
+        }
+
+        nav {
+            background-color: #1c1c1c;
+            padding: 15px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 30px;
+        }
+
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background: linear-gradient(135deg, rgba(0, 255, 0, 0.5), rgba(0, 255, 0, 1));
+            transform: scale(1.1);
+        }
+
+        section {
+            padding: 100px 20px;
+            margin: 20px 0;
+        }
+
+        section#home {
+            text-align: center;
+            background-color: #151515;
+
+        }
+
+        section#history,
+        section#languages,
+        section#updates,
+        section#faq,
+        section#about {
+            background-color: #1a1a1a;
+        }
+
+        section h1,
+        section h2 {
+            color: #00FF00;
+        }
+
+        section#languages ul li {
+            background-color: #2c2c2c;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        section#languages ul li:hover {
+            transform: scale(1.05);
+            background-color: #c4f1c4;
+            color: #1c1c1c;
+        }
+        section#languages a{
+            font-size: medium;
+            color: #ffc273;
+            margin-left: 40px;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(70, 76, 68, 0.274);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-content {
+            background-color: #2c2c2c;
+            padding: 20px;
+            width: 300px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .popup-content ul {
+            list-style: none;
+        }
+
+        .popup-content a {
+            color: #41d655;
+            margin: 4px;
+        }
+
+        button {
+            background-color: #00FF00;
+            margin: 2px;
+            color: #1c1c1c;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #1c1c1c;
+            color: #00FF00;
+            transform: scale(1.1);
+        }
+
+        footer {
+            padding: 20px 50px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        footer p {
+            font-size: 0.9rem;
+        }
+
+        #updates a {
+            color: #c4f1c4;
+            margin-top: 5px;
+        }
+
+        #faq ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #faq li {
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        #faq .question {
+            font-weight: bold;
+            font-size: 16px;
+            padding: 10px;
+            background-color: #000000;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        #faq .question:hover {
+            background-color: #3f3e3e;
+        }
+
+        #faq .answer {
+            display: none;
+            font-size: 14px;
+            margin-top: 5px;
+            padding: 10px;
+            background-color: #000000;
+            border: 1px solid #ffffff;
+            border-radius: 5px;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                max-height: 0;
+            }
+
+            to {
+                opacity: 1;
+                max-height: 500px;
+            }
+        }
+
+        .about-us-section {
+            padding: 40px 20px;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            border-top: 2px solid #000000;
+        }
+
+        .about-us-section h2 {
+            font-size: 28px;
+            color: #71e785;
+            margin-bottom: 15px;
+        }
+
+        .about-us-section p {
+            font-size: 16px;
+            margin: 8px 0;
+            color: #ffffff;
+        }
+
+        .about-us-section strong {
+            color: #fff9ac;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#history">History</a></li>
+            <li><a href="#languages">Languages</a></li>
+            <li><a href="#updates">Updates</a></li>
+            <li><a href="javascript:void(0)" onclick="openPopup()">Resources</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#about">About Us</a></li>
+        </ul>
+    </nav>
+    <section id="home">
+        <h1> WELCOME TO THE CODING WORLD </h1>
+    </section>
+
+    <section id="history">
+        <h2>History of Coding</h2>
+        <p>Coding dates back to the early 19th century when Charles Babbage conceptualized the first mechanical
+            computer, the Analytical Engine. Ada Lovelace, often referred to as the first computer programmer, wrote
+            instructions for the Analytical Engine, laying the foundation for programming as we know it today.</p>
+        <p>In the mid-20th century, the development of electronic computers led to the creation of modern programming
+            languages. For example, Assembly Language emerged as a way to write machine instructions in a more readable
+            format, while higher-level languages like Fortran (1957) and COBOL (1959) made it easier to program
+            computers for scientific and business tasks.</p>
+        <p>The 1970s and 1980s saw the rise of languages like C and C++, which are still widely used today. Java and
+            Python came into prominence in the 1990s and 2000s, and today we have a variety of programming languages
+            that serve different needs from web development to machine learning.</p>
+    </section>
+
+    <section id="languages">
+        <h2>Top 15 Programming Languages</h2>
+        <ul>
+            <li><strong>JavaScript</strong> - Created by Brendan Eich in 1995. JavaScript is primarily used for
+                client-side web development, allowing developers to create interactive and dynamic websites. It's widely
+                supported by all modern browsers.</li>
+            <li><strong>Python</strong> - Created by Guido van Rossum in 1991. Python is known for its simple syntax and
+                readability, making it a popular choice for beginners. It's used in web development, data analysis,
+                artificial intelligence, and more.</li>
+            <li><strong>Java</strong> - Created by James Gosling in 1995. Java is an object-oriented programming
+                language that runs on the Java Virtual Machine (JVM), allowing developers to write code once and run it
+                anywhere.</li>
+            <li><strong>C++</strong> - Developed by Bjarne Stroustrup in 1983. C++ is an extension of the C programming
+                language and is widely used for system/software development, game programming, and applications
+                requiring high-performance computation.</li>
+            <li><strong>C</strong> - Developed by Dennis Ritchie in 1972. C is a foundational programming language and
+                is often used for system programming, creating operating systems, and developing embedded systems.</li>
+            <li><strong>PHP</strong> - Created by Rasmus Lerdorf in 1993. PHP is widely used for server-side web
+                development. It's often embedded into HTML and is a crucial part of many content management systems
+                (e.g., WordPress).</li>
+            <li><strong>Ruby</strong> - Created by Yukihiro Matsumoto in 1995. Ruby is known for its simplicity and
+                productivity. It is the language behind the Ruby on Rails framework, used for building web applications.
+            </li>
+            <li><strong>Swift</strong> - Created by Apple in 2014. Swift is a modern, fast, and safe language used to
+                develop iOS and macOS applications. It was designed to work alongside Objective-C and improve on it.
+            </li>
+            <li><strong>Go</strong> - Created by Google in 2009. Go, also known as Golang, is designed for simplicity
+                and efficiency. It is widely used for web services and cloud applications due to its fast performance
+                and scalability.</li>
+            <li><strong>Rust</strong> - Developed by Mozilla in 2010. Rust is known for its memory safety features and
+                is ideal for system programming, game development, and high-performance applications.</li>
+            <li><strong>Kotlin</strong> - Developed by JetBrains in 2011. Kotlin is a modern programming language that
+                runs on the JVM and is used primarily for Android development. It is considered a more concise and safer
+                alternative to Java.</li>
+            <li><strong>SQL</strong> - Developed by IBM in 1974. SQL (Structured Query Language) is used to manage and
+                manipulate relational databases. It is essential for developers working with data storage and retrieval.
+            </li>
+            <li><strong>TypeScript</strong> - Created by Microsoft in 2012. TypeScript is a superset of JavaScript that
+                adds static typing. It is commonly used in large-scale web applications and modern frontend frameworks
+                like Angular.</li>
+            <li><strong>Shell</strong> - Shell scripting is used to interact with the operating system's command line
+                interface. It is widely used in system administration and automation tasks.</li>
+            <li><strong>R</strong> - Developed by Ross Ihaka and Robert Gentleman in 1993. R is a language and
+                environment used for statistical computing and graphics. It is popular in data analysis, machine
+                learning, and data visualization.</li>
+        </ul>
+        <p><a href="https://en.wikipedia.org/wiki/History_of_programming_languages" target="_blank"> Visit Wikipedia</a></p>
+    </section>
+    <section id="updates">
+        <h2>Latest Coding News</h2>
+        <div id="news"></div>
+        <p><a href="https://www.ndtv.com/ai#pfrom=home-ndtv_mainnavigation" target="_blank">Visit NDTV for more news</a>
+        </p>
+        <p><a href="https://cio.economictimes.indiatimes.com/tag/coding" target="_blank">Visit Economic times for more
+                news</a></p>
+    </section>
+
+    <div id="resources-popup" class="popup">
+        <div class="popup-content">
+            <h2>Resources</h2>
+            <p>Click on the links below to access a variety of online coding resources:</p>
+            <ul>
+                <li><a href="https://www.geeksforgeeks.org/" target="_blank">GeeksforGeeks</a></li>
+                <li><a href="https://www.javatpoint.com/" target="_blank">JavaPoint</a></li>
+                <li><a href="https://www.programiz.com/" target="_blank">Programiz</a></li>
+                <li><a href="https://www.w3schools.com/" target="_blank">W3Schools</a></li>
+            </ul>
+            <button onclick="closePopup()">Close</button>
+        </div>
+    </div>
+    <section id="faq">
+        <h2>FAQ</h2>
+        <ul class="dropdown">
+            <li>
+                <div class="question">What is coding?</div>
+                <div class="answer">Coding is the process of writing instructions for a computer to follow, in order to
+                    perform tasks.</div>
+            </li>
+            <li>
+                <div class="question">Why should I learn coding?</div>
+                <div class="answer">Coding is a valuable skill in today's digital world and is essential for many
+                    professions.</div>
+            </li>
+            <li>
+                <div class="question">What is the easiest programming language for beginners?</div>
+                <div class="answer">Python is often considered the easiest due to its simple syntax and readability.
+                </div>
+            </li>
+            <li>
+                <div class="question">What is a compiler?</div>
+                <div class="answer">A compiler translates code written in a high-level language into machine code that
+                    can be executed by the computer.</div>
+            </li>
+            <li>
+                <div class="question">How long does it take to learn coding?</div>
+                <div class="answer">It depends on the individual and the programming language, but it can take anywhere
+                    from a few months to a couple of years.</div>
+            </li>
+        </ul>
+    </section>
+    <section id="about" class="about-us-section">
+        <div class="container">
+            <h2>About Us</h2>
+            <p>Created by: <strong>Mrityunjay Kumar</strong></p>
+            <p>Languages Used: <strong>HTML,CSS, JS</strong></p>
+            <p>
+                This website is designed and developed for checking creativity purpose only .
+            </p>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2024 HS KENZO. All Rights Reserved.</p>
+    </footer>
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        function openPopup() {
+            document.getElementById('resources-popup').style.display = 'flex';
+        }
+
+        function closePopup() {
+            document.getElementById('resources-popup').style.display = 'none';
+        }
+
+        document.querySelectorAll("#faq .question").forEach((question) => {
+            question.addEventListener("click", () => {
+                const answer = question.nextElementSibling;
+                if (answer.style.display === "block") {
+                    answer.style.display = "none";
+                } else {
+                    answer.style.display = "block";
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

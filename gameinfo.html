@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top PC Games</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #1f1c2c, #52505f)
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+            justify-content: center;
+        }
+
+        .game-card {
+            background-color: #7a767a;
+            border: 1px solid #000000;
+            border-radius: 8px;
+            width: 300px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.74);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .game-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .game-image img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .game-content {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .game-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        .description-btn {
+            display: inline-block;
+            margin: 10px 0;
+            padding: 10px 15px;
+            color: #ffffff;
+            background-color: #000000b7;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .description-btn:hover {
+            background-color: #a0919f;
+        }
+
+        .more-info {
+            margin-top: 10px;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .more-info:hover {
+            color: #bbbbbb;
+        }
+
+        .description {
+            display: none;
+            font-size: 0.9em;
+            color: #ffffff;
+            margin-top: 10px;
+            text-align: left;
+        }
+    </style>
+    
+    <script>
+        function toggleDescription(btn) {
+            const description = btn.nextElementSibling;
+            description.style.display = description.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="game-card">
+            <div class="game-image">
+                <img src="https://i.pinimg.com/originals/9a/2c/1c/9a2c1c428752523b0a8c6a5cb65a386e.jpg" alt="GTA">
+            </div>
+            <div class="game-content">
+                <h2 class="game-title">Grand Theft Auto (GTA)</h2>
+                <button class="description-btn" onclick="toggleDescription(this)">Description</button>
+                <div class="description">GTA is an open-world action-adventure game. GTA ke baare me koun nahi jaanta yaar.</div>
+                <a class="more-info" href="https://www.rockstargames.com" target="_blank">More Info</a>
+            </div>
+        </div>
+
+        <div class="game-card">
+            <div class="game-image">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRu3hbR6pMMn93ov4d4mzROOC7QnvUgeku93Q&s" alt="Call of Duty">
+            </div>
+            <div class="game-content">
+                <h2 class="game-title">Call of Duty (COD)</h2>
+                <button class="description-btn" onclick="toggleDescription(this)">Description</button>
+                <div class="description">COD offers intense first-person shooter gameplay with realistic combat scenarios and multiplayer modes.</div>
+                <a class="more-info" href="https://www.callofduty.com" target="_blank">More Info</a>
+            </div>
+        </div>
+
+        <div class="game-card">
+            <div class="game-image">
+                <img src="https://cdn2.unrealengine.com/gamename-store-landscape-2560x1440-2560x1440-606256535.jpg" alt="Far Cry">
+            </div>
+            <div class="game-content">
+                <h2 class="game-title">Far Cry</h2>
+                <button class="description-btn" onclick="toggleDescription(this)">Description</button>
+                <div class="description">Far Cry is an open-world first-person shooter game known for its beautiful landscapes and gripping stories.</div>
+                <a class="more-info" href="https://www.ubisoft.com/far-cry" target="_blank">More Info</a>
+            </div>
+        </div>
+
+        <div class="game-card">
+            <div class="game-image">
+                <img src="https://images.hindustantimes.com/tech/img/2021/07/22/1600x900/minecraft-starter-collection-squareboxart-01-ps4-11dec19-en-us_1595775100026_1595775112780_1626929601097.jfif" alt="Minecraft">
+            </div>
+            <div class="game-content">
+                <h2 class="game-title">Minecraft</h2>
+                <button class="description-btn" onclick="toggleDescription(this)">Description</button>
+                <div class="description">Minecraft is a sandbox game where players can build, explore, and survive in blocky worlds.</div>
+                <a class="more-info" href="https://www.minecraft.net" target="_blank">More Info</a>
+            </div>
+        </div>
+
+        <div class="game-card">
+            <div class="game-image">
+                <img src="https://cdn2.unrealengine.com/ac2-gamename-store-landscape-2560x1440-2560x1440-aa944fa0e8c6.jpg" alt="Assassin's Creed">
+            </div>
+            <div class="game-content">
+                <h2 class="game-title">Assassin's Creed</h2>
+                <button class="description-btn" onclick="toggleDescription(this)">Description</button>
+                <div class="description">This series immerses players in historical settings with stealth and action gameplay.</div>
+                <a class="more-info" href="https://www.ubisoft.com/assassins-creed" target="_blank">More Info</a>
+            </div>
+        </div>
+
+        <div class="game-card">
+            <div class="game-image">
+                <img src="https://img.tapimg.net/market/images/b48918711a0142633785de4c85cb4536.jpg?imageView2/0/w/720/h/405/format/jpg/interlace/1/ignore-error/1&t=1" alt="Motel Manager">
+            </div>
+            <div class="game-content">
+                <h2 class="game-title">Motel Manager</h2>
+                <button class="description-btn" onclick="toggleDescription(this)">Description</button>
+                <div class="description">Manage and grow your own motel business in this simulation game.</div>
+                <a class="more-info" href="https://example.com/motel-manager" target="_blank">More Info</a>
+            </div>
+        </div>
+
+        <div class="game-card">
+            <div class="game-image">
+                <img src="https://4kwallpapers.com/images/wallpapers/need-for-speed-police-cars-racing-cars-3440x1440-2723.jpg" alt="NFS">
+            </div>
+            <div class="game-content">
+                <h2 class="game-title">Need FOR Speed</h2>
+                <button class="description-btn" onclick="toggleDescription(this)">Description</button>
+                <div class="description">The Need for Speed (NFS) franchise is a legendary series of racing games, known for its thrilling 
+                                          high-speed gameplay, immersive environments, and a focus on car chases. 
+                                          Two standout titles in this series are Most Wanted and Hot Pursuit, each offering distinct experiences.</div>
+                <a class="more-info" href="https://www.ea.com/games/need-for-speed" target="_blank">More Info</a>
+            </div>
+        </div>
+
+        <div class="game-card">
+            <div class="game-image">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjqtyBKXDMP1nQAKnvalJC-lfQwQyv0i7ftg&s" alt="Motel Manager">
+            </div>
+            <div class="game-content">
+                <h2 class="game-title">PUBG</h2>
+                <button class="description-btn" onclick="toggleDescription(this)">Description</button>
+                <div class="description">PlayerUnknown's Battlegrounds (PUBG) is a pioneering battle royale game developed by PUBG Corporation (a subsidiary of Bluehole). Released in 2017, it quickly gained global popularity for its intense, strategic, and survival-focused gameplay.</div>
+                <a class="more-info" href="https://pubg.com/" target="_blank">More Info</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
