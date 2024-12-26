@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technology Explained</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(120deg, #1e90ff, #ff69b4);
+            color: #ffffff;
+            overflow-x: hidden;
+            overflow-y: scroll;
+            scrollbar-width: thin;
+            scrollbar-color: #ff69b4 #1e90ff;
+        }
+
+        body::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        body::-webkit-scrollbar-track {
+            background: #1e90ff;
+        }
+
+        body::-webkit-scrollbar-thumb {
+            background-color: #ff69b4;
+            border-radius: 10px;
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 1rem 2rem;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        nav {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 0.5rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 15;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 1rem;
+            position: relative;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ff69b4;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            right: 0%;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 1rem;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        nav ul li:hover .dropdown {
+            display: block;
+        }
+
+        .dropdown p {
+             
+            color: #fff;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .dropdown p strong {
+            color: #ff69b4;
+        }
+
+        .search-bar {
+            position: relative;
+            margin: 1rem auto;
+            max-width: 400px;
+            display: flex;
+        }
+
+        .search-bar input {
+            flex: 1;
+            padding: 0.5rem;
+            border: none;
+            border-radius: 20px 0 0 20px;
+            outline: none;
+            font-size: 1rem;
+        }
+
+        .search-bar button {
+            padding: 0.5rem 1rem;
+            border: none;
+            background: #ff69b4;
+            color: #fff;
+            border-radius: 0 20px 20px 0;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+
+        .search-bar button:hover {
+            background: #ff1493;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 2rem;
+            gap: 2rem;
+        }
+
+        .card {
+            width: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+            transform: scale(1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card-content h2 {
+            margin: 0 0 1rem;
+            font-size: 1.8rem;
+        }
+
+        .card-content p {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .card-content a {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background: #ff69b4;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .card-content a:hover {
+            background: #ff1493;
+        }
+
+        .section {
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .section p {
+            font-size: 1.2rem;
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 1.5rem 2rem;
+            text-align: center;
+            color: #fff;
+            margin-top: 2rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        footer a {
+            color: #ff69b4;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: #ff1493;
+        }
+
+        .cont {
+            width: 100%;
+            text-align: center;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div><a href="#"
+                style="font-size: 1.5rem; font-weight: bold; color: #ff69b4; text-decoration: none;">TechWorld</a></div>
+        <ul>
+            <li><a href="#technologies">Technologies</a></li>
+            <li><a href="#about">About</a></li>
+            <li>
+                <a href="#">Contact</a>
+                <div class="dropdown">
+                    <p><strong>Email:</strong> prajapatiworks.11@gmail.com</p>
+                    <p><strong>Phone:</strong> Sorry</p>
+                    <p><strong>Address:</strong> Earth</p>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <header id="home">
+        <h1>WELCOME TO TECH WORLD</h1>
+    </header>
+
+    <div class="search-bar">
+        <form action="https://www.google.com/search" method="get" target="_blank">
+            <input type="text" name="q" placeholder="Search the web..." required>
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    <div class="container" id="technologies">
+        <div class="card">
+            <img src="img\software.jpeg" alt="Software Development">
+            <div class="card-content">
+                <h2>Software Development</h2>
+                <p>Learn the latest trends in software development including modern programming languages, frameworks,
+                    and tools.</p>
+                <a href="https://en.wikipedia.org/wiki/Software_development" target="_blank">Learn More</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="img\cyber.jpg" alt="Cyber Security">
+            <div class="card-content">
+                <h2>Cyber Security</h2>
+                <p>Understand how to protect networks, systems, and programs from digital attacks.</p>
+                <a href="https://en.wikipedia.org/wiki/Computer_security" target="_blank">Learn More</a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="img\AI.jpeg" alt="AI & ML">
+            <div class="card-content">
+                <h2>AI & Machine Learning</h2>
+                <p>Explore how artificial intelligence and machine learning are revolutionizing industries.</p>
+                <a href="https://en.wikipedia.org/wiki/Artificial_intelligence" target="_blank">Learn More</a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="img\cloud.jpg" alt="Cloud Computing">
+            <div class="card-content">
+                <h2>Cloud Computing</h2>
+                <p>Discover the power of cloud infrastructure and how it's transforming businesses.</p>
+                <a href="https://en.wikipedia.org/wiki/Cloud_computing" target="_blank">Learn More</a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="img\data.webp" alt="Data Science">
+            <div class="card-content">
+                <h2>Data Science</h2>
+                <p>Learn how to extract insights from vast amounts of data using statistical and computational
+                    techniques.</p>
+                <a href="https://en.wikipedia.org/wiki/Data_science" target="_blank">Learn More</a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="img\iot.jpg" alt="IoT">
+            <div class="card-content">
+                <h2>Internet of Things (IoT)</h2>
+                <p>Understand how interconnected devices are changing the way we live and work.</p>
+                <a href="https://en.wikipedia.org/wiki/Internet_of_things" target="_blank">Learn More</a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="img\web-development-guide.jpg" alt="Web & App Development">
+            <div class="card-content">
+                <h2>Web & App Development</h2>
+                <p>Explore how modern web and app development are shaping the digital landscape.</p>
+                <a href="https://en.wikipedia.org/wiki/Web_development" target="_blank">Learn More</a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="img\blockchain.jpg" alt="Blockchain Technology">
+            <div class="card-content">
+                <h2>Blockchain Technology</h2>
+                <p>Discover the transformative power of distributed ledgers in secure transactions.</p>
+                <a href="https://en.wikipedia.org/wiki/Blockchain" target="_blank">Learn More</a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="img\quantum.jpg" alt="Quantum Computing">
+            <div class="card-content">
+                <h2>Quantum Computing</h2>
+                <p>Dive into the world of qubits and quantum mechanics revolutionizing computation.</p>
+                <a href="https://en.wikipedia.org/wiki/Quantum_computing" target="_blank">Learn More</a>
+            </div>
+        </div>
+
+        <!-- Other cards omitted for brevity -->
+    </div>
+
+    <section id="about" class="about-us-section">
+        <div class="cont">
+            <h2>About Us</h2>
+            <p>Created by: <strong>Mrityunjay Kumar</strong></p>
+            <p>Languages Used: <strong>HTML,CSS, JS</strong></p>
+            <p>Editor: Visual Studio Code</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 TechWorld. All rights reserved.</p>
+        <p>Connect with us <a href="https://www.linkedin.com/in/mrityunjay-kumar-78a34a304?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">LinkedIn</a>, and <a href="https://github.com/mrityunjay15">GitHub</a>.</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href').slice(1); // Remove '#' to get the id
+                const targetElement = document.getElementById(targetId);
+
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
